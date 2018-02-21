@@ -1,0 +1,5 @@
+en:
+  plugins:
+    item_linker:
+      create: Create Digital Object
+      update: Update Digital Object

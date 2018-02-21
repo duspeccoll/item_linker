@@ -1,0 +1,13 @@
+<%
+  digital_objects = record.instances.select{|i| i["instance_type"] == "digital_object"}
+%>
+
+<% if ['edit'].include?(controller.action_name) %>
+  <% if digital_objects.empty? %>
+    <a href="<%= "#{AppConfig[:frontend_proxy_prefix]}plugins/item_linker/#{params[:id]}/create"%>"><%= I18n.t("plugins.item_linker.create") %></a>
+  <% else %>
+    <% unless record.external_documents.select{|e| e["title"] == "Special Collections @ DU"}.empty? %>
+      <a href="<%= "#{AppConfig[:frontend_proxy_prefix]}plugins/item_linker/#{params[:id]}/update"%>"><%= I18n.t("plugins.item_linker.update") %></a>
+    <% end %>
+  <% end %>
+<% end %>
